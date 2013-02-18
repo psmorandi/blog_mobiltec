@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Adic. Cont." id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" text="Voltar" action="__back"/>
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1">
+            <amx:inputText label="Nome" id="inputName" value="#{viewScope.contactManager.contactName}"/>
+            <amx:inputText label="Celular" id="inputCell" value="#{viewScope.contactManager.cellNumber}"/>            
+        </amx:panelFormLayout>
+        <amx:commandButton text="Salvar" id="cbSave" action="__back"
+                           actionListener="#{viewScope.contactManager.saveContact}"/>
+    </amx:panelPage>
+</amx:view>

@@ -1,0 +1,1 @@
+var l={"NY":["NY","Nueva York"]};DvtBaseMapManager.updateResourceBundle("usa","states",l);

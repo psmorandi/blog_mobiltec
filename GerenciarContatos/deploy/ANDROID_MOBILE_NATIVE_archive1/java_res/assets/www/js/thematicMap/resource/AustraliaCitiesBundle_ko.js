@@ -1,0 +1,1 @@
+var l={"AUS_CANBERRA":[null,"\uCE94\uBC84\uB77C"],"NZL_WELLINGTON":[null,"\uC6F0\uB9C1\uD134"]};DvtBaseMapManager.updateResourceBundle("australia","cities",l);

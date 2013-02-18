@@ -1,0 +1,1 @@
+var l={"MO_ST__LOUIS":[null,"Saint Louis"],"PA_PHILADELPHIA":[null,"Philadelphie"],"MN_ST__PAUL":[null,"Saint Paul"],"LA_NEW_ORLEANS":[null,"La Nouvelle-Orl\u00E9ans"],"LA_BATON_ROUGE":[null,"B\u00E2ton-Rouge"],"FL_ST__PETERSBURG":[null,"Saint P\u00E9tersbourg"]};DvtBaseMapManager.updateResourceBundle("usa","cities",l);

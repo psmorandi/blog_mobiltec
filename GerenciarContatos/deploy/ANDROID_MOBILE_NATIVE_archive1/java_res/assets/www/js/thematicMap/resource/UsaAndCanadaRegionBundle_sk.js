@@ -1,0 +1,1 @@
+var l={"NA":["USA, CAN","Spojen\u00E9 \u0161t\u00E1ty a Kanada"]};DvtBaseMapManager.updateResourceBundle("usaAndCanada","region",l);

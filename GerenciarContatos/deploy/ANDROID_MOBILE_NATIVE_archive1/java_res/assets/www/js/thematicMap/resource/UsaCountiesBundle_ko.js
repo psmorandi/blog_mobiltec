@@ -1,0 +1,1 @@
+var l={"AK_PETERSBURG":[null,"\uD398\uD14C\uB974\uBD80\uB974\uD06C"]};DvtBaseMapManager.updateResourceBundle("usa","counties",l);

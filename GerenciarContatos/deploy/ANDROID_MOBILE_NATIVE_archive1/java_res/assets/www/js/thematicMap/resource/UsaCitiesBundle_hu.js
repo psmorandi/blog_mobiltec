@@ -1,0 +1,1 @@
+var l={"FL_ST__PETERSBURG":[null,"Szentp\u00E9terv\u00E1r"]};DvtBaseMapManager.updateResourceBundle("usa","cities",l);

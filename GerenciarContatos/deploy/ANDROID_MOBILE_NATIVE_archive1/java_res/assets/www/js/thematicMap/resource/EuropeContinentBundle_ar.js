@@ -1,0 +1,1 @@
+var l={"EU":["EU","\u0623\u0648\u0631\u0628\u0627"]};DvtBaseMapManager.updateResourceBundle("europe","continent",l);

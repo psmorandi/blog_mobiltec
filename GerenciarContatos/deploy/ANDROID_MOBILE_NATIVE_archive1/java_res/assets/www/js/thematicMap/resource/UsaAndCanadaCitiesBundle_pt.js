@@ -1,0 +1,1 @@
+var l={"USA_RIVERSIDE_SAN_BERNARDINO":[null,"Riverside - San Bernardino"],"USA_PHILADELPHIA":[null,"Filad\u00E9lfia"],"USA_NEW_YORK":[null,"Nova Iorque"],"USA_SAN_FRANCISCO":[null,"S\u00E3o Francisco"]};DvtBaseMapManager.updateResourceBundle("usaAndCanada","cities",l);

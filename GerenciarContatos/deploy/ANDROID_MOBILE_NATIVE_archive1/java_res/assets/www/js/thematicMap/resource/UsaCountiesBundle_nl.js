@@ -1,0 +1,1 @@
+var l={"DC_WASHINGTON":[null,"Washington DC"],"NE_BANNER":[null,"Titelregel"]};DvtBaseMapManager.updateResourceBundle("usa","counties",l);

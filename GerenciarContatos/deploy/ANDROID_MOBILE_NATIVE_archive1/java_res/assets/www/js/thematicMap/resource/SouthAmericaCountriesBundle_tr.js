@@ -1,0 +1,1 @@
+var l={"SUR":["SUR","Surinam"],"ECU":["ECU","Ekvator"],"TTO":["TTO","Tirinidad ve Tobago"],"BOL":["BOL","Bolivya"],"CHL":["CHL","\u015Eili"],"ARG":["ARG","Arjantin"],"COL":["COL","Kolombiya"],"FLK":["FLK","Falkland Adalar\u0131"],"GUF":["GUF","Frans\u0131z Guyanas\u0131"],"BRA":["BRA","Brezilya"]};DvtBaseMapManager.updateResourceBundle("southAmerica","countries",l);

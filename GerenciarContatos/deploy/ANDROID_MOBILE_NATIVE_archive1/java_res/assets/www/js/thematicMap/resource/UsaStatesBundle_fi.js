@@ -1,0 +1,1 @@
+var l={"NC":["NC","Pohjois-Carolina"],"ND":["ND","Pohjois-Dakota"],"WV":["WV","L\u00E4nsi-Virginia"],"HI":["HI","Havaiji"],"CA":["CA","Kalifornia"],"SD":["SD","Etel\u00E4-Dakota"],"SC":["SC","Etel\u00E4-Carolina"]};DvtBaseMapManager.updateResourceBundle("usa","states",l);

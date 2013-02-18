@@ -1,0 +1,1 @@
+var l={"LAT":["LAT","Latinoam\u00E9rica"]};DvtBaseMapManager.updateResourceBundle("latinAmerica","region",l);

@@ -1,0 +1,1 @@
+var l={"TTO":["TTO","Trinidad en Tobago"],"CHL":["CHL","Chili"],"ARG":["ARG","Argentini\u00EB"],"FLK":["FLK","Falklandeilanden"],"GUF":["GUF","Frans-Guyana"],"BRA":["BRA","Brazili\u00EB"]};DvtBaseMapManager.updateResourceBundle("southAmerica","countries",l);

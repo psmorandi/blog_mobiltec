@@ -1,0 +1,1 @@
+var l={"NA":["USA, CAN","Amerika Birle\u015Fik Devletleri ve Kanada"]};DvtBaseMapManager.updateResourceBundle("usaAndCanada","region",l);

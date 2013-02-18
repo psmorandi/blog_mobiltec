@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="ContatosViewController-task-flow">
+    <default-activity>Main</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name>contactManager</managed-bean-name>
+      <managed-bean-class>br.com.mobiltec.oracleadf.testes.contactsviewcontroller.ContactManager</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="Main">
+      <page>/Main.amx</page>
+    </view>
+    <view id="AddContact">
+      <page>/AddContact.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>Main</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>showAddContact</from-outcome>
+        <to-activity-id>AddContact</to-activity-id>
+        <transition>flipRight</transition>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-mobile-config>

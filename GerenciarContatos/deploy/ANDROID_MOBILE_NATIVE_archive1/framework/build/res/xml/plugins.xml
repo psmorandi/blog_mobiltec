@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugins>
+    <plugin name="App" value="com.phonegap.App"/>
+    <plugin name="Geolocation" value="com.phonegap.GeoBroker"/>
+    <plugin name="Device" value="com.phonegap.Device"/>
+    <plugin name="Accelerometer" value="com.phonegap.AccelListener"/>
+    <plugin name="Compass" value="com.phonegap.CompassListener"/>
+    <plugin name="Media" value="com.phonegap.AudioHandler"/>
+    <plugin name="Camera" value="com.phonegap.CameraLauncher"/>
+    <plugin name="Contacts" value="com.phonegap.ContactManager"/>
+    <plugin name="Crypto" value="com.phonegap.CryptoHandler"/>
+    <plugin name="File" value="com.phonegap.FileUtils"/>
+    <plugin name="Network Status" value="com.phonegap.NetworkManager"/>
+    <plugin name="Notification" value="com.phonegap.Notification"/>
+    <plugin name="Storage" value="com.phonegap.Storage"/>
+    <plugin name="Temperature" value="com.phonegap.TempListener"/>
+    <plugin name="FileTransfer" value="com.phonegap.FileTransfer"/>
+    <plugin name="Capture" value="com.phonegap.Capture"/>
+    <plugin name="ADFMobileFeatures" value="oracle.adfmf.phonegap.ADFMobileFeatures"/>
+    <plugin name="ADFMobileShell" value="oracle.adfmf.phonegap.ADFMobileShell"/>
+    <plugin name="VMChannelCommand" value="oracle.adfmf.phonegap.VMChannelCommand"/>
+    <plugin name="ADFMobileDevice" value="oracle.adfmf.phonegap.ADFMobileDevice"/>
+    <plugin name="ADFMobileMessaging" value="oracle.adfmf.phonegap.ADFMobileMessaging"/>
+    <plugin name="ADFMobilePhoneGapLocation" value="oracle.adfmf.phonegap.ADFMobileGeoBroker"/>
+    <plugin name="ADFMobileSecurity" value="oracle.adfmf.phonegap.ADFMobileSecurity"/>
+</plugins>

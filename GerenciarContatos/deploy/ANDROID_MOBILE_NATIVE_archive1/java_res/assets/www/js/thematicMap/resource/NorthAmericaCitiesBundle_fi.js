@@ -1,0 +1,1 @@
+var l={"CUB_HAVANA":[null,"Havanna"]};DvtBaseMapManager.updateResourceBundle("northAmerica","cities",l);

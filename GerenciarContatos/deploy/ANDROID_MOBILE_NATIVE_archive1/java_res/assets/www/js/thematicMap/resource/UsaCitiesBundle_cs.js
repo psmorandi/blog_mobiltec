@@ -1,0 +1,1 @@
+var l={"PA_PHILADELPHIA":[null,"Filadelfie"],"VA_ALEXANDRIA":[null,"Alexandrie"],"FL_ST__PETERSBURG":[null,"St. Pet\u011Brburg"],"GA_ATHENS":[null,"At\u00E9ny"]};DvtBaseMapManager.updateResourceBundle("usa","cities",l);

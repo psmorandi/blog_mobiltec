@@ -1,0 +1,1 @@
+var l={"NV_LYON":[null,"Lione"],"IA_LYON":[null,"Lione"],"MN_LYON":[null,"Lione"],"KS_LYON":[null,"Lione"],"MD_BALTIMORE":[null,"Baltimora"],"KY_LYON":[null,"Lione"],"IN_SWITZERLAND":[null,"Svizzera"],"PA_LEBANON":[null,"Libano"]};DvtBaseMapManager.updateResourceBundle("usa","counties",l);

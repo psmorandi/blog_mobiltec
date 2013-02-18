@@ -1,0 +1,1 @@
+var l={"EGY_CAIRO":[null,"Kairo"],"ZAF_CAPE_TOWN":[null,"Kapstaden"],"DZA_ALGIERS":[null,"Algier"],"TGO_LOME":[null,"Lom\u00E9"],"CMR_YAOUNDE":[null,"Yaound\u00E9"]};DvtBaseMapManager.updateResourceBundle("africa","cities",l);

@@ -1,0 +1,1 @@
+var l={"USA_BALTIMORE":[null,"Baltimora"]};DvtBaseMapManager.updateResourceBundle("usaAndCanada","cities",l);

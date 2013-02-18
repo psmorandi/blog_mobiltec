@@ -1,0 +1,1 @@
+var l={"PRY":["PRY","Paraguai"],"GUY":["GUY","Guiana"],"ECU":["ECU","Equador"],"TTO":["TTO","Trindade e Tobago"],"URY":["URY","Uruguai"],"BOL":["BOL","Bol\u00EDvia"],"COL":["COL","Col\u00F4mbia"],"FLK":["FLK","Ilhas Falkland"],"GUF":["GUF","Guiana Francesa"],"BRA":["BRA","Brasil"]};DvtBaseMapManager.updateResourceBundle("southAmerica","countries",l);

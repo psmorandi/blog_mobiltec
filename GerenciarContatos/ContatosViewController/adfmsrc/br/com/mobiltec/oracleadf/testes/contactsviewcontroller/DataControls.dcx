@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="11.1.2.62.94" id="DataControls"
+                    Package="br.com.mobiltec.oracleadf.testes.contactsviewcontroller">
+  <AdapterDataControl id="ContactManager" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="br.com.mobiltec.oracleadf.testes.contactsviewcontroller.ContactManager"
+                      BeanClass="br.com.mobiltec.oracleadf.testes.contactsviewcontroller.ContactManager"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="br.com.mobiltec.oracleadf.testes.contactsviewcontroller.ContactManager"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="br.com.mobiltec.oracleadf.testes.contactsviewcontroller.ContactManager"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

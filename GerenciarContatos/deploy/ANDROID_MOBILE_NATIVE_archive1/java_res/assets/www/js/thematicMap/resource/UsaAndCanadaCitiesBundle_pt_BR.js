@@ -1,0 +1,1 @@
+var l={"USA_PHILADELPHIA":[null,"Filad\u00E9lfia"],"USA_NEW_YORK":[null,"Nova York"],"USA_SAN_FRANCISCO":[null,"S\u00E3o Francisco"]};DvtBaseMapManager.updateResourceBundle("usaAndCanada","cities",l);

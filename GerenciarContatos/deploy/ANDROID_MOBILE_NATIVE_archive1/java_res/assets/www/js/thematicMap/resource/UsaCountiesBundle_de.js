@@ -1,0 +1,1 @@
+var l={"DC_WASHINGTON":[null,"Washington, D.C."],"NE_PLATTE":[null,"Datentr\u00E4ger"],"WY_PLATTE":[null,"Datentr\u00E4ger"],"MO_PLATTE":[null,"Datentr\u00E4ger"]};DvtBaseMapManager.updateResourceBundle("usa","counties",l);

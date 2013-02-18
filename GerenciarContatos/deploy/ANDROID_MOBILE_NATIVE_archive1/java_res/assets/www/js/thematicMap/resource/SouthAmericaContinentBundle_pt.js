@@ -1,0 +1,1 @@
+var l={"SA":["SA","Am\u00E9rica do Sul"]};DvtBaseMapManager.updateResourceBundle("southAmerica","continent",l);

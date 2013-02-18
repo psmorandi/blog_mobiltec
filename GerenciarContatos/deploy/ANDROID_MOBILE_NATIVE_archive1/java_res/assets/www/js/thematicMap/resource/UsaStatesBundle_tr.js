@@ -1,0 +1,1 @@
+var l={"NC":["NC","Kuzey Carolina"],"ND":["ND","Kuzey Dakota"],"WV":["WV","Bat\u0131 Virginia"],"SD":["SD","G\u00FCney Dakota"],"SC":["SC","G\u00FCney Carolina"]};DvtBaseMapManager.updateResourceBundle("usa","states",l);

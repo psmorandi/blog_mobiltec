@@ -1,0 +1,1 @@
+var l={"NY":["NY","\u30CB\u30E5\u30FC\u30E8\u30FC\u30AF"],"GA":["GA","\u30B0\u30EB\u30B8\u30A2"],"WA":["WA","\u30EF\u30B7\u30F3\u30C8\u30F3"],"DC":["DC","\u30EF\u30B7\u30F3\u30C8\u30F3DC"]};DvtBaseMapManager.updateResourceBundle("usa","states",l);

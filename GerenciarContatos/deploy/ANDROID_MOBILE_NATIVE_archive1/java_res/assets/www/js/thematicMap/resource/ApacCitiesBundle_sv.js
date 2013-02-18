@@ -1,0 +1,1 @@
+var l={"NPL_KATHMANDU":[null,"Katmandu"],"VNM_HO_CHI_MINH_CITY":[null,"Ho Chi Minh-staden"],"MAC_MACAU":[null,"Macao"],"CHN_BEIJING":[null,"Peking"],"IND_KOLKATA":[null,"Calcutta"]};DvtBaseMapManager.updateResourceBundle("apac","cities",l);

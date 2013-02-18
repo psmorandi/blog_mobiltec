@@ -1,0 +1,1 @@
+var l={"USA":["USA","\u7F8E\u570B"],"CAN":["CAN","\u52A0\u62FF\u5927"]};DvtBaseMapManager.updateResourceBundle("usaAndCanada","countries",l);

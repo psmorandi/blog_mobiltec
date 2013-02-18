@@ -1,0 +1,1 @@
+var l={"APAC":["APAC","Asie a Tichomo\u0159\u00ED"]};DvtBaseMapManager.updateResourceBundle("apac","region",l);

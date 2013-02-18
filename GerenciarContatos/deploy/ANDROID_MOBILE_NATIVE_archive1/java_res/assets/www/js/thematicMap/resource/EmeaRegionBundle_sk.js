@@ -1,0 +1,1 @@
+var l={"EMEA":["EMEA","Eur\u00F3pa, Stredn\u00FD v\u00FDchod a Afrika"]};DvtBaseMapManager.updateResourceBundle("emea","region",l);

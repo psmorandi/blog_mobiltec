@@ -1,0 +1,1 @@
+var l={"HKG_HONG_KONG":[null,"Hongkong"],"VNM_HO_CHI_MINH_CITY":[null,"Ho Chi Minh-byen"]};DvtBaseMapManager.updateResourceBundle("apac","cities",l);

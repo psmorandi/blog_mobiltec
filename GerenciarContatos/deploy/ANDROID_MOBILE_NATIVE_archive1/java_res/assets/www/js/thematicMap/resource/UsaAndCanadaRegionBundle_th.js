@@ -1,0 +1,1 @@
+var l={};DvtBaseMapManager.updateResourceBundle("usaAndCanada","region",l);

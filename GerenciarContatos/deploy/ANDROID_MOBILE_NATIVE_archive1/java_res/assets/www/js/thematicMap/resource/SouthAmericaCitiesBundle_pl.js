@@ -1,0 +1,1 @@
+var l={"BRA_CURITIBA":[null,"Kurytyba"],"BOL_SUCRE":[null,"Sucra"],"GUF_CAYENNE":[null,"Kajenna"]};DvtBaseMapManager.updateResourceBundle("southAmerica","cities",l);

@@ -1,0 +1,508 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html height="100%" class="ui-mobile">
+    <head>
+        <meta name="viewport" content="user-scalable=no,initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <script type="text/javascript" charset="utf-8" src="js/phonegap-1.0.0.js"></script>
+        <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/amx.js"></script>
+        <script type="text/javascript" src="js/adf.el.js"></script>
+        <script type="text/javascript" src="js/adf.mf.device.integration.js"></script>
+        <script type="text/javascript" src="js/adfc-mobile.js"></script>
+        <!-- this is needed for localized resource loading -->
+        <script type="text/javascript" src="js/Locale.js"></script>
+        <!-- We are using amx styles to style the login -->
+        <link rel="stylesheet" href="css/amx.css"/>
+        <link rel="stylesheet" href="css/amx-panels.css"/>
+        <link rel="stylesheet" href="css/amx-commonTags.css"/>
+        <!-- Overrides for our screen -->
+        <link rel="stylesheet" href="css/adf.login.css"/>
+        <script type="text/javascript" charset="utf-8">
+            
+            // safely load the resources
+            try
+            {
+              amx.loadTrinidadResources("js");
+            }
+            catch(e)
+            {
+              alert(e);
+            }
+            
+            /* Settings for this page */
+            var LoginManagerSettings = LoginManagerSettings || {};
+            LoginManagerSettings.loginBtnId = 'div#loginButton';
+            LoginManagerSettings.loginBtn_pressedClass = "amx-commandButton-pressed";
+            LoginManagerSettings.showRememberMe = false;
+            function displayOracleErrorMessage(msg, title)
+            {
+                adf.mf.login.hideBusy();
+                alert(msg);
+            }
+            /*
+             * Used to notify us that an alert dialog was opened.  We assume this is an
+             * error message from the ACS so we dismiss the busy indicator.
+             */
+            function onADFMobileNativeDialogDisplayed()
+            {
+                adf.mf.login.hideBusy();
+            }
+            /**
+             * When ADF Mobile shows us as active it will call this function if we register
+             * it with ADF Mobile through the JavaScript API.  If we are being activated and
+             * parameters are being passed to use we will bet them in this call.
+             */
+            var featureId = null;   // store the previous feature id that the login page is for
+            function onADFMobileActivation(parameter)
+            {
+                try
+                {
+                    var newFeatureName = null;
+                    var newFeatureId = null;
+                    if (typeof parameter != "undefined" && parameter !== null)
+                    {
+                        newFeatureId = parameter.id;
+                        newFeatureName = parameter.name;
+                    }
+                    if (newFeatureId !== featureId)
+                    {
+                        // clear username when switching feature
+                        $('#username').val('');
+                        featureId = newFeatureId;
+                    }
+                    if (newFeatureName !== null)
+                    {
+                        $('#message').text(newFeatureName);
+                    }
+                    else
+                    {
+                        $('#message').text('Welcome');
+                    }
+                    $('#password').val('');
+                    
+                    adf.mf.login.hideBusy();
+                }
+                catch(e)
+                {
+                    adf.mf.login.hideBusy();
+                    alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_ADFMOBILEACTIVATION_FAILED", e));
+             
+                }
+            }
+            /**
+             * When ADF Mobile has an error registering our activation handler this method is called.
+             */
+            function errorRegisteringActivationHandler(errorCode)
+            {
+                alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_REGISTERINGACTIVATIONHANDLER_FAILED", errorCode));
+            }
+
+            var loadStage = "Enter try";
+            try
+            {
+                loadStage = "Define LoginManager";
+                /*
+                 *  LoginButton - the constructor for the login button - this object will
+                 *  handle events for the login button.
+                 */
+                function LoginButton(myParent)
+                {
+                    try
+                    {
+                        this.parent = myParent;
+                        this.$node = function()
+                        {
+                            var $loginButton = $(this.parent._loginBtnId);
+                            if($loginButton == null){
+                                alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_LOGINBUTTON_MISSING"));
+                                return;
+                            }
+                            return $loginButton;
+                        }
+                        this.ontouchstart = function(event)
+                        {
+                            event.preventDefault();
+                            this.$node().addClass(this.parent._loginBtnId_pressedClass);
+                        }
+                        this.ontouchmove = function(event)
+                        {
+                            event.preventDefault();
+                            var $loginButton = this.$node();
+                            if (this.parent.testHit($loginButton, this.parent.getActiveTouch(event) ) )
+                            {
+                                $loginButton.addClass(this.parent._loginBtnId_pressedClass);
+                            }
+                            else
+                            {
+                                $loginButton.removeClass(this.parent._loginBtnId_pressedClass);
+                            }
+                        }
+                        this.ontouchend = function(event)
+                        {
+                            event.preventDefault();
+                            var $loginButton = this.$node();
+                            adf.mf.login.onLogin();
+                            $loginButton.removeClass(this.parent._loginBtnId_pressedClass);
+                        }
+                        this.init = function()
+                        {
+                            var $loginButton = this.$node()
+                            $loginButton.bind('touchmove',function(e){adf.mf.login.loginButton.ontouchmove(e.originalEvent);});
+                            $loginButton.bind('touchend', function(e){adf.mf.login.loginButton.ontouchend(e.originalEvent);});
+                            $loginButton.bind('touchstart', function(e){adf.mf.login.loginButton.ontouchstart(e.originalEvent);});
+                        }
+                    }
+                    catch(e)
+                    {
+                        alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_LOGINBUTTON_CTOR_FAILED", e));
+                    }
+                }
+
+                /**
+                 * LoginManager - constructor that creates an object that is used to
+                 *     manage the state of the login page.
+                 */
+                function LoginManager()
+                {
+                    /* Loging Properties */
+                    this._loginBtnId = LoginManagerSettings.loginBtnId;
+                    this._loginBtnId_pressedClass = LoginManagerSettings.loginBtn_pressedClass;
+                    this._showRememberMe = LoginManagerSettings.showRememberMe;
+                    this._rememberMe = false;
+                    this._isMTAware = false;
+
+                    this.setMTAware = function(newValue)
+                    {
+                        this._isMTAware = newValue;
+                    }
+
+
+                    /*
+                     * These functions allow you to show and hide the
+                     * remember me feature.
+                     */
+                    this.showRememberMe = function()
+                    {
+                        this._showRememberMe = true;
+                        this.updateRememberMe();
+                    }
+                    this.hideRememberMe = function()
+                    {
+                        this._showRememberMe = false;
+                        this.updateRememberMe();
+                    }
+
+                    /*
+                     * These functions allow you to set and get the current
+                     * value of the remember me setting.  By default we do
+                     * not remember.  This could be read from a setting at
+                     * some point.
+                     */
+                    this.getRememberMe = function()
+                    {
+                        return this._rememberMe;
+                    }
+                    this.setRememberMe = function(newValue)
+                    {
+                        this._rememberMe = newValue;
+                    }
+                    this.toggleRememberMe = function()
+                    {
+                        var rm = this.getRememberMe();
+                        this.setRememberMe(!rm);
+                        this.updateRememberMe();
+                    }
+                    this.updateRememberMe = function()
+                    {
+                        if(this._showRememberMe)
+                        {
+                            $("#rememberMePanel").show();
+                            if (this.getRememberMe())
+                            {
+                                $("#rememberMe").addClass("on").removeClass("off");;
+                            }
+                            else
+                            {
+                                $("#rememberMe").addClass("off").removeClass("on");;
+                            }
+                        }
+                        else
+                        {
+                            $("#rememberMePanel").hide();
+                        }
+                    }
+
+                    this.getUserName = function()
+                    {
+                        return $('#username').val();
+                    }
+                    this.getPassword = function()
+                    {
+                        return $('#password').val();
+                    }
+
+                    this._login = function()
+                    {
+                        try
+                        {
+                            var username = this.getUserName();
+                            var password = adf.mf.util.obfuscate(this.getPassword());
+                            var rememberMe = this.getRememberMe();
+                            if (username != undefined && password != undefined && username != "" && password != "")
+                            {
+                                if(typeof adf != "undefined" && typeof adf.mf.api.invokeSecurityMethod != "undefined")
+                                {
+                                    adf.mf.api.invokeSecurityMethod("login", username, password, "");
+                                }
+                                else
+                                {
+                                    adf.mf.login.hideBusy();
+                                    alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_LOGINAPI_MISSING"));
+                                }
+                            }
+                            else
+                            {
+                                adf.mf.login.hideBusy();
+                                alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_USERNAME_PASSWORD_MISSING"));
+                            }
+                        }
+                        catch(e)
+                        {
+                            adf.mf.login.hideBusy();
+                            alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_LOGIN_FAILED", e.description));
+                        }
+
+                    }
+
+                    this.hideBusy = function()
+                    {
+                        var $div = $("#amx-loading");
+                        $div.removeClass("showing");       // get rid of opacity:1
+                        $div.addClass("hiding");           // animate to opacity:0
+                        $div.removeClass("hiding"); // no longer animating
+                        $div.addClass("hidden");    // set display:none
+                    }
+
+                    this.showBusy = function()
+                    {
+                        var $div = $("#amx-loading");
+                        $div.removeClass("hidden");     // get rid of the display:none
+                        $div.addClass("beforeShowing"); // now at display:block but with opacity:0
+                        $div.removeClass("beforeShowing"); // get rid of opacity:0
+                        $div.addClass("showing");          // animate to opacity:1
+                    }
+
+                    this.onLogin = function()
+                    {
+                        try
+                        {
+                            // Show the loading indicator
+                            adf.mf.login.showBusy();
+                            // Then perform the login
+                            setTimeout("adf.mf.login._login();",5);
+                        }
+                        catch(e)
+                        {
+                            alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_ONLOGIN_FAILED", e.description));
+                        }
+                    }
+
+                    this.focusUsername = function(event)
+                    {
+                        document.getElementById("username").focus()
+                    }
+                    this.focusPassword = function(event)
+                    {
+                        document.getElementById("password").focus()
+                    }
+
+                    this.touchStart = function(event)
+                    {
+                        $("#password").blur(); // dismiss keyboard
+                    }
+                    this.touchEnd = function(event)
+                    {
+                        //event.preventDefault();
+                    }
+                    this.touchMove = function(event)
+                    {
+                        event.preventDefault();
+                    }
+                    this.touchCancel = function(event)
+                    {
+                        //event.preventDefault();
+                    }
+                    this.init = function ()
+                    {
+                        this.loginButton.init();
+                        this.updateRememberMe();
+                        $("#username").blur();
+                    }
+                    this.getActiveTouch = function(event)
+                    {
+                        if(event.touches && event.touches.length>0)
+                        {
+                            return event.touches[0];
+                        }
+                        else if(event.changedTouches && event.changedTouches.length>0)
+                        {
+                            return event.changedTouches[0];
+                        }
+                        return null;
+                    }
+                    this.testHit = function($node,touch)
+                    {
+                        if(touch===null)
+                        {
+                            return false;
+                        }
+                        if($node===null)
+                        {
+                            return false;
+                        }
+                        var x = touch.clientX;
+                        var y = touch.clientY;
+                        var t = $node.position().top;
+                        var l = $node.position().left;
+                        var w = $node.width();
+                        var h = $node.height();
+                        //alert(x + "," + y);
+                        var isInNode = false;
+                        if(x<l+w && x>l)
+                        {
+                            if(y<t+h && y>t)
+                            {
+                                isInNode = true;
+                            }
+                        }
+                        if(isInNode)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                    try
+                    {
+                        this.loginButton = new LoginButton(this);
+                    }
+                    catch(e)
+                    {
+                        alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_NEW_LOGINBUTTON_FAILED", e));
+                    }
+                }
+                // Make sure the login infrastructure is built up
+                loadStage = "Define adf";
+                var adf = adf || {};
+                loadStage = "Define adf.mf";
+                adf.mf = adf.mf || {};
+                loadStage = "Define adf.mf.login";
+                adf.mf.login = new LoginManager();
+
+                /**
+                 * Document is done loading this is called and we add a listener for the
+                 * phonegap event 'deviceready'.
+                 */
+                loadStage = "Define onBodyLoad";
+                function onBodyLoad()
+                {
+                    document.addEventListener("deviceready",onDeviceReady,false);
+                }
+                /**
+                 * When this function is called, PhoneGap has been initialized and is ready to roll.
+                 */
+
+                loadStage = "Define onDeviceReady";
+                function onDeviceReady()
+                {
+                    try
+                    {
+                        //show busy cursor
+                        adf.mf.login.showBusy();
+                        
+                        // Initialize the login object.
+                        adf.mf.login.init();
+                        adf.mf.Features.registerActivationHandler(onADFMobileActivation, errorRegisteringActivationHandler);
+                        
+                        //hide busy cursor
+                        adf.mf.login.hideBusy();
+                    }
+                    catch(e)
+                    {
+                        adf.mf.login.hideBusy();
+                        alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_ERROR_IN_ONDEVICEREADY", e));
+                    }
+                }
+            }
+            catch(e)
+            {
+                alert(adf.mf.resource.getInfoString("AMXInfoBundle", "MSG_ERROR_IN_SCRIPT", loadStage, e.description));
+            }
+            </script>
+    </head>
+    <body id="mainBody" onload="onBodyLoad()" class="ui-mobile-viewport" ontouchstart="adf.mf.login.touchStart(event);" ontouchend="adf.mf.login.touchEnd(event);" ontouchmove="adf.mf.login.touchMove(event);" ontouchcancel="adf.mf.login.touchCancel(event);">
+        <div data-role="page" id="bodyPage" data-theme="b" data-url="bodyPage" class="ui-page ui-body-b ui-page-active">
+            <div class="amx-view-container current">
+                <div class="amx-node amx-view">
+                    <div class="amx-node amx-panelPage">
+                        <div class="amx-panelPage-header">
+                            <div class="amx-panelPage-facet-header">
+                                <div class="amx-node amx-outputText" id="message">Welcome</div>
+                            </div>
+                        </div>
+                        <div class="amx-panelFormLayout amx-label-position-start amx-field-halign-end amx-layout-one-row amx-node">
+                            <div class="amx-panelFormLayout_body">
+                                <div class="amx-panelFormLayout_sizing">
+                                    <div class="field-label"></div>
+                                    <div class="field-value"></div>
+                                </div>
+                                <div class="field amx-node amx-inputText" onclick="adf.mf.login.focusUsername();">
+                                    <div class="field-label">
+                                        <label>Username</label>
+                                    </div>
+                                    <div class="field-value">
+                                        <input type="text" autocorrect="off" autocapitalize="off" name="username" id="username"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="amx-panelFormLayout amx-label-position-start amx-field-halign-end amx-layout-one-row amx-node">
+                            <div class="amx-panelFormLayout_body">
+                                <div class="amx-panelFormLayout_sizing">
+                                    <div class="field-label"></div>
+                                    <div class="field-value"></div>
+                                </div>
+                                <div class="field amx-node amx-inputText" onclick="adf.mf.login.focusPassword();">
+                                    <div class="field-label">
+                                        <label>Password</label>
+                                    </div>
+                                    <div class="field-value">
+                                        <input type="password" name="password" id="password"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div align="center">
+                            <div id="loginButton" class="amx-node amx-commandButton">
+                                <div class="amx-node amx-commandButton-label">Login</div>
+                            </div>
+                        </div>
+                        <div id="rememberMePanel" class="amx-layout-one-row amx-node">
+                            <div id="rememberMe" class="field amx-node amx-selectBooleanCheckbox"  onclick="adf.mf.login.toggleRememberMe();">
+                                <div class="field-label">
+                                    <label>Remember me</label>
+                                </div>
+                                <div class="field-value">
+                                    <div class="checkbox">
+                                        <div class="img-check"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="amx-loading" class="amx-loading hidden">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+var l={"NZL":["NZL","Neuseeland"],"AUS":["AUS","Australien"]};DvtBaseMapManager.updateResourceBundle("australia","countries",l);

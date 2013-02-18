@@ -1,0 +1,1 @@
+var l={"CA":["CA","Californi\u00EB"],"DC":["DC","Washington DC"]};DvtBaseMapManager.updateResourceBundle("usa","states",l);

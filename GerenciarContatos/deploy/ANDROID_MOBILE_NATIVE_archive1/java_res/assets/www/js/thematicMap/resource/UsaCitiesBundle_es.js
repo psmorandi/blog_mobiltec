@@ -1,0 +1,1 @@
+var l={"IN_INDIANAPOLIS":[null,"Indian\u00E1polis"],"CA_SAN_JOSE":[null,"San Jos\u00E9"],"NY_NEW_YORK":[null,"Nueva York"],"CA_LOS_ANGELES":[null,"Los \u00C1ngeles"],"FL_CAPE_CORAL":[null,"Cabo Coral"],"HI_HONOLULU":[null,"Honolul\u00FA"],"FL_ST__PETERSBURG":[null,"San Petersburgo"]};DvtBaseMapManager.updateResourceBundle("usa","cities",l);

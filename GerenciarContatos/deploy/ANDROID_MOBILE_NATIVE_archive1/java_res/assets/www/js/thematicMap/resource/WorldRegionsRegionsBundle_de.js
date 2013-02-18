@@ -1,0 +1,1 @@
+var l={"EMEA":["EMEA","Europa, Mittlerer Osten und Afrika"],"LAT":["LAT","Lateinamerika"],"APAC":["APAC","Asien-Pazifik"],"NA":["USA, CAN","Vereinigte Staaten und Kanada"]};DvtBaseMapManager.updateResourceBundle("worldRegions","regions",l);

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.62.94" id="MainPageDef"
+                Package="br.com.mobiltec.oracleadf.testes.contactsviewcontroller.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ContactManager" id="ContactManagerIterator"/>
+    <accessorIterator MasterBinding="ContactManagerIterator" Binds="allContacts" RangeSize="25"
+                      DataControl="ContactManager" BeanClass="oracle.adf.model.datacontrols.device.Contact"
+                      id="allContactsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allContactsIterator" id="allContacts">
+      <nodeDefinition DefName="oracle.adf.model.datacontrols.device.Contact" Name="allContacts0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="displayName"/>
+          <Item Value="nickname"/>
+          <Item Value="birthday"/>
+          <Item Value="note"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="name"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.adf.model.datacontrols.device.ContactName">
+        <AttrNames>
+          <Item Value="formatted"/>
+          <Item Value="familyName"/>
+          <Item Value="givenName"/>
+          <Item Value="middleName"/>
+          <Item Value="honorificPrefix"/>
+          <Item Value="honorificSuffix"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

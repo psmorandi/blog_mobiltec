@@ -1,0 +1,1 @@
+var l={"KOR_SEOUL":[null,"Seul"],"MAC_MACAU":[null,"Macao"]};DvtBaseMapManager.updateResourceBundle("apac","cities",l);

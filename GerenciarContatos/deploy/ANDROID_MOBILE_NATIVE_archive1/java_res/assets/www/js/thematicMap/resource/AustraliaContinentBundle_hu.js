@@ -1,0 +1,1 @@
+var l={"AU":["AU","Ausztr\u00E1lia"]};DvtBaseMapManager.updateResourceBundle("australia","continent",l);

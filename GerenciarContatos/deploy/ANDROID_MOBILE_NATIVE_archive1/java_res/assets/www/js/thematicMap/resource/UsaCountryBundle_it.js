@@ -1,0 +1,1 @@
+var l={"USA":["USA","Stati Uniti d'America"]};DvtBaseMapManager.updateResourceBundle("usa","country",l);

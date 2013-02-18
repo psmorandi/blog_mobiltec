@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Contatos" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" text="Adic." action="showAddContact" shortDesc="add"/>
+    </amx:facet>
+    <amx:listView var="row" value="#{bindings.allContacts1.collectionModel}"
+                  fetchSize="#{bindings.allContacts1.rangeSize}" id="lv1">
+      <amx:listItem id="li1">
+        <amx:tableLayout width="100%" id="tl1">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf1"/>
+            <amx:cellFormat width="100%" height="28px" id="cf2">
+              <amx:outputText value="#{row.displayName}" id="ot2"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl2">
+            <amx:cellFormat width="100%" height="12px" id="cf3">
+              <amx:outputText value="#{row.note}" styleClass="adfmf-listItem-captionText" id="ot3"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

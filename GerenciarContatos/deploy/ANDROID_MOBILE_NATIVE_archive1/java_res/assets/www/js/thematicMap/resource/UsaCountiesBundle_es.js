@@ -1,0 +1,1 @@
+var l={"AK_PETERSBURG":[null,"Petersburgo"],"HI_HONOLULU":[null,"Honolul\u00FA"],"NY_NEW_YORK":[null,"Nueva York"]};DvtBaseMapManager.updateResourceBundle("usa","counties",l);

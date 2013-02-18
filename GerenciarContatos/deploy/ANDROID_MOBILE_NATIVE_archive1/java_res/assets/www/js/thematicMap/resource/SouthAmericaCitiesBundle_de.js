@@ -1,0 +1,1 @@
+var l={"COL_BOGOTA":[null,"Bogot\u00E1"],"PRY_ASUNCION":[null,"Asunci\u00F3n"],"TTO_PORT_OF_SPAIN":[null,"Port-of-Spain"],"COL_MEDELLIN":[null,"Medell\u00EDn"]};DvtBaseMapManager.updateResourceBundle("southAmerica","cities",l);

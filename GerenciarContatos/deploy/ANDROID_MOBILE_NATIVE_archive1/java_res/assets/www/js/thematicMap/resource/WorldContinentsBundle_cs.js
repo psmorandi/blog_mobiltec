@@ -1,0 +1,1 @@
+var l={"AS":["AS","Asie"],"AU":["AU","Austr\u00E1lie"],"EU":["EU","Evropa"],"AF":["AF","Afrika"],"NA":["SA","Severn\u00ED Amerika"],"SA":["JA","Ji\u017En\u00ED Amerika"]};DvtBaseMapManager.updateResourceBundle("world","continents",l);

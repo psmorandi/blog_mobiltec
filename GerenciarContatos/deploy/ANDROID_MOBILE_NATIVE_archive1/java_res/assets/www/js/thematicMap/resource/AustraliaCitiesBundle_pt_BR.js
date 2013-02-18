@@ -1,0 +1,1 @@
+var l={"AUS_CANBERRA":[null,"Camberra"]};DvtBaseMapManager.updateResourceBundle("australia","cities",l);

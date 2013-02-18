@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.62.94" id="DataBindings"
+             SeparateXMLFiles="false" Package="br.com.mobiltec.oracleadf.testes.contactsviewcontroller" ClientType="Generic">
+  <pageMap>
+    <page path="/AddContact.amx" usageId="br_com_mobiltec_oracleadf_testes_contactsviewcontroller_AddContactPageDef"/>
+    <page path="/Main.amx" usageId="br_com_mobiltec_oracleadf_testes_contactsviewcontroller_MainPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="br_com_mobiltec_oracleadf_testes_contactsviewcontroller_AddContactPageDef"
+          path="br.com.mobiltec.oracleadf.testes.contactsviewcontroller.pageDefs.AddContactPageDef"/>
+    <page id="br_com_mobiltec_oracleadf_testes_contactsviewcontroller_MainPageDef"
+          path="br.com.mobiltec.oracleadf.testes.contactsviewcontroller.pageDefs.MainPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="ContactManager" path="br.com.mobiltec.oracleadf.testes.contactsviewcontroller.ContactManager"/>
+    <dc id="DeviceFeatures" path="br.com.mobiltec.oracleadf.testes.contatctsmanager.DeviceFeatures"/>
+  </dataControlUsages>
+</Application>

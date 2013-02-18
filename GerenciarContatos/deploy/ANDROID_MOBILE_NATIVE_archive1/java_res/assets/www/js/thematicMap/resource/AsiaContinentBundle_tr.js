@@ -1,0 +1,1 @@
+var l={"AS":["Asya","Asya"]};DvtBaseMapManager.updateResourceBundle("asia","continent",l);

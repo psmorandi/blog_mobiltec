@@ -1,0 +1,1 @@
+var l={"GTM_GUATEMALA_CITY":[null,"Guatemala By"]};DvtBaseMapManager.updateResourceBundle("northAmerica","cities",l);

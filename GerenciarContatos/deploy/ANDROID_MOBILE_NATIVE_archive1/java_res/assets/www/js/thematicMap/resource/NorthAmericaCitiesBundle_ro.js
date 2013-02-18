@@ -1,0 +1,1 @@
+var l={"GTM_GUATEMALA_CITY":[null,"Ciudad de Guatemala"],"PAN_PANAMA_CITY":[null,"Ciudad de Panam\u00E1"]};DvtBaseMapManager.updateResourceBundle("northAmerica","cities",l);

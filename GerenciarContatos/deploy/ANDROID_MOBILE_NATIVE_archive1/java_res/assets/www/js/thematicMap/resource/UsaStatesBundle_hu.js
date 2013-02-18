@@ -1,0 +1,1 @@
+var l={"NM":["NM","\u00DAj Mexik\u00F3"],"NC":["NC","\u00C9szak-Carolina"],"ND":["ND","\u00C9szak-Dakota"],"WV":["WV","Nyugat-Virginia"],"AK":["AK","Alaszka"],"CA":["CA","Kalifornia"],"SD":["SD","D\u00E9l-Dakota"],"SC":["SC","D\u00E9l-Carolina"],"CO":["CO","Kolor\u00E1d\u00F3"]};DvtBaseMapManager.updateResourceBundle("usa","states",l);

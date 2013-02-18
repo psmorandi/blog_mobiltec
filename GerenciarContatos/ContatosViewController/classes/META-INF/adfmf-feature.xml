@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+  <adfmf:feature id="br.com.mobiltec.oracleadf.testes.mainpage" name="mainpage">
+    <adfmf:content id="br.com.mobiltec.oracleadf.testes.mainpage.1">
+      <adfmf:constraints/>
+      <adfmf:amx file="br.com.mobiltec.oracleadf.testes.mainpage/ContatosViewController-task-flow.xml#ContatosViewController-task-flow"/>
+    </adfmf:content>
+  </adfmf:feature>
+</adfmf:features>

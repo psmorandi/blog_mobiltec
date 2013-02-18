@@ -1,0 +1,1 @@
+var l={"DZA_ALGIERS":[null,"Alger"]};DvtBaseMapManager.updateResourceBundle("africa","cities",l);

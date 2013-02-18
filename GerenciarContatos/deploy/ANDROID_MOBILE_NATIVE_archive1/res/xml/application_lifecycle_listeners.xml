@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ADFmf-Android-Native-Framework>
+    <application-lifecycle-listeners>
+        <!-- 
+        	The Automation listener MUST be first because in automation mode we may redirect the first feature
+        	or do some initialization of the first feature before we head into Security or CVM.  Notice that 
+        	the Automation stuff only redirects the initial feature and then responds to featureDisplayed which
+        	is after the CVM LCL has already performed the Embedded LCL calls.
+        -->
+       <application-lifecycle-listener classname="oracle.adfmf.lifecycle.automation.AutomationLifecycleListener" />
+       <!-- 
+       		The CVM Application Lifecycle Listener is responsable for sending the Embedded notifications to the 
+       		Java side.  It will always pause the activation of a feature to ensure the queued events into the
+       		CVM are synchronously executed.
+        -->
+       <application-lifecycle-listener classname="oracle.adfmf.lifecycle.cvm.CVMApplicationLifecycleListener" />
+       <!-- 
+       		The Security Application Lifecycle Listener is responsable for handling login UI flow as well as
+       		re-authentication UI flow once idle/session timeout occurs.
+        -->
+       <application-lifecycle-listener classname="oracle.adfmf.framework.security.SecurityApplicationLifecycleListener" />
+     </application-lifecycle-listeners>
+</ADFmf-Android-Native-Framework>
+

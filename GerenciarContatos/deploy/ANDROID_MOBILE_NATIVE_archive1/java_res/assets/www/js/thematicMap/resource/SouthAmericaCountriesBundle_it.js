@@ -1,0 +1,1 @@
+var l={"PER":["PER","Per\u00F9"],"TTO":["TTO","Trinidad e Tobago"],"CHL":["CHL","Cile"],"FLK":["FLK","Isole Falkland"],"GUF":["GUF","Guiana francese"],"BRA":["BRA","Brasile"]};DvtBaseMapManager.updateResourceBundle("southAmerica","countries",l);

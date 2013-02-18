@@ -1,0 +1,1 @@
+var l={"APAC":["APAC","Asie Pacifique"]};DvtBaseMapManager.updateResourceBundle("apac","region",l);
