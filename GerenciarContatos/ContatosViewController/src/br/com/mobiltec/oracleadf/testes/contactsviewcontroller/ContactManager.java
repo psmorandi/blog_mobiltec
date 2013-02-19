@@ -30,31 +30,26 @@ public class ContactManager {
 
         try {
             Contact contact = new Contact();
-            ContactName cname = new ContactName();
+            
+			ContactName cname = new ContactName();
             cname.setGivenName(contactName);
-            cname.setFamilyName("asefa");
-            contact.setBirthday(new Date());
-            contact.setName(cname);
-            contact.setNote("asdfghhh");
-            contact.setDisplayName("Contato1");
-            contact.setAddresses(new ContactAddresses[]{});
-            contact.setCategories(new ContactField[]{});
-            contact.setEmails(new ContactField[]{});
-            contact.setIms(new ContactField[]{});
-            contact.setNickname("NickName");
-            contact.setOrganizations(new ContactOrganization[]{});
-            contact.setPhotos(new ContactField[]{});
-            contact.setUrls(new ContactField[]{});
+            cname.setFamilyName("Family Name");
+            
+			contact.setName(cname);
+			
+            contact.setNote(cellNumber); //colocando o número do cel. em notas para facilitar 
+										 //o desenvolvimento deste exemplo
                         
+			/*esta seria a maneira correta de colocar o telefone
             ContactField cf = new ContactField();
             cf.setType("mobile");
             cf.setValue(cellNumber);
-
-            contact.setPhoneNumbers(new ContactField[] { cf });
+            contact.setPhoneNumbers(new ContactField[] { cf });*/
+						
             DeviceManagerFactory.getDeviceManager().createContact(contact);
         } catch (Exception ex) {
             Trace.log(Utility.ApplicationLogger, Level.SEVERE, ContactManager.class, "saveContact",
-                      "Deu erro na bagaça!");
+                      "Ocorreu um erro ao tentar salvar o contato!");
             Trace.log(Utility.ApplicationLogger, Level.SEVERE, ContactManager.class, "saveContact", ex);
         }
     }
